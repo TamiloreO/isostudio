@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>isostudio</title>
+  <meta name="description" content="An isometric scene composer that sorts depth, shares one light, and exports a map your editor can open." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="masthead">
+    <p class="kicker">ISOMETRIC SCENE COMPOSER</p>
+    <h1>isostudio</h1>
+    <p class="lede">Place tiles and props. The tool works out draw order and shading, checks the seams, and exports a Tiled map.</p>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <canvas id="view" width="880" height="520" aria-label="Isometric scene"></canvas>
+      <p class="hint" id="hint">Click to place. Shift-click removes. The light slider re-shades everything at once.</p>
+    </section>
+
+    <aside class="panel">
+      <div class="group">
+        <h2>Ground</h2>
+        <div class="brushes" id="ground-brushes"></div>
+      </div>
+
+      <div class="group">
+        <h2>Props</h2>
+        <div class="brushes" id="prop-brushes"></div>
+      </div>
+
+      <div class="group">
+        <h2>Light</h2>
+        <label class="row" for="light">
+          <input type="range" id="light" min="0" max="359" value="45" />
+          <output id="light-value">45°</output>
+        </label>
+        <p class="note">Every face is shaded from this angle. Nothing keeps its own baked light.</p>
+      </div>
+
+      <div class="group">
+        <h2>Checks</h2>
+        <ul class="warnings" id="warnings"></ul>
+        <p class="note" id="check-note">Seams appear when two tiles meet without matching edges.</p>
+      </div>
+
+      <div class="group">
+        <h2>Export</h2>
+        <div class="buttons">
+          <button type="button" id="export-map">scene.tmj</button>
+          <button type="button" id="export-manifest">manifest.json</button>
+          <button type="button" id="export-preview">preview.png</button>
+          <button type="button" id="export-atlas">atlas.png</button>
+        </div>
+        <p class="note">Open scene.tmj in Tiled with atlas.png beside it.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <p>MIT. Built with plain modules and no framework, so the core runs anywhere.</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
