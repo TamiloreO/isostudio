@@ -18,6 +18,10 @@ python3 -m http.server 8080
 
 Open http://localhost:8080/demo/.
 
+## Stack
+
+No dependencies and no build step. The core is ES modules, so the files the tests import are the files the browser loads. That is a practical choice rather than a position: the work is geometry and canvas drawing, and a UI framework would wrap the canvas without helping it.
+
 ## Tests
 
 ```bash
